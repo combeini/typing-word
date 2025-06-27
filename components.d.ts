@@ -46,6 +46,7 @@ declare module 'vue' {
     Fireworks: typeof import('./src/components/Fireworks.vue')['default']
     IconWrapper: typeof import('./src/components/IconWrapper.vue')['default']
     Input: typeof import('./src/components/Input.vue')['default']
+    KeyboardHint: typeof import('./src/components/KeyboardHint.vue')['default']
     List: typeof import('./src/components/list/List.vue')['default']
     Logo: typeof import('./src/components/Logo.vue')['default']
     MiniDialog: typeof import('./src/components/dialog/MiniDialog.vue')['default']

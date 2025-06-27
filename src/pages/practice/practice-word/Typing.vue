@@ -234,6 +234,7 @@ defineExpose({del, showWord, hideWord, play})
   align-items: center;
   justify-content: center;
   word-break: break-word;
+  margin-top: -60rem; // 将整个组件往上移动
 
   .phonetic, .translate {
     font-size: 20rem;
@@ -248,8 +249,8 @@ defineExpose({del, showWord, hideWord, play})
 
   .translate {
     position: absolute;
-    transform: translateY(-50%);
-    margin-bottom: 90rem;
+    transform: translateY(-100%);
+    margin-bottom: 100rem; // 调整底部边距，使中文解释不要太靠上
     color: var(--color-font-2);
 
     &:hover {

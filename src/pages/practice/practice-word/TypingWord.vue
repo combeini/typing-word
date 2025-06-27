@@ -21,6 +21,7 @@ import WordList from "@/components/list/WordList.vue";
 import Empty from "@/components/Empty.vue";
 import MiniDialog from "@/components/dialog/MiniDialog.vue";
 import BaseButton from "@/components/BaseButton.vue";
+import KeyboardHint from "@/components/KeyboardHint.vue";
 
 interface IProps {
   words: Word[],
@@ -43,6 +44,9 @@ const runtimeStore = useRuntimeStore()
 const practiceStore = usePracticeStore()
 const settingStore = useSettingStore()
 
+// 当前输入的内容
+let input = $ref('')
+
 const {
   isWordCollect,
   toggleWordCollect,
@@ -64,6 +68,7 @@ watch(() => props.words, () => {
   data.words = props.words
   data.index = props.index
   data.wrongWords = []
+  input = '' // 重置输入内容
 
   practiceStore.wrongWords = []
   practiceStore.repeatNumber = 0
@@ -224,6 +229,17 @@ onMounted(() => {
   emitter.on(ShortcutKey.ToggleCollect, collect)
   emitter.on(ShortcutKey.ToggleSimple, toggleWordSimpleWrapper)
   emitter.on(ShortcutKey.PlayWordPronunciation, play)
+  
+  // 监听输入事件，更新当前输入内容
+  emitter.on(EventKey.onTyping, (e: KeyboardEvent) => {
+    if (e.key.length === 1) { // 只处理单个字符的按键
+      if (e.key.toLowerCase() === word.name[input.length]?.toLowerCase()) {
+        input += e.key
+      }
+    } else if (e.key === 'Backspace') {
+      input = input.slice(0, -1)
+    }
+  })
 })
 
 onUnmounted(() => {
@@ -233,6 +249,7 @@ onUnmounted(() => {
   emitter.off(ShortcutKey.ToggleCollect, collect)
   emitter.off(ShortcutKey.ToggleSimple, toggleWordSimpleWrapper)
   emitter.off(ShortcutKey.PlayWordPronunciation, play)
+  emitter.off(EventKey.onTyping)
 })
 
 </script>
@@ -268,6 +285,7 @@ onUnmounted(() => {
         @wrong="wordWrong"
         @next="next"
     />
+    <KeyboardHint :current-key="word.name && word.name[input.length] || ''" />
     <div class="options-wrapper">
       <Options
           :is-simple="isWordSimple(word)"
@@ -380,6 +398,7 @@ onUnmounted(() => {
   font-size: 14rem;
   color: gray;
   gap: 6rem;
+  padding-bottom: 80rem; // 为键盘提示腾出更多空间
   position: relative;
   width: var(--toolbar-width);
 
@@ -424,7 +443,7 @@ onUnmounted(() => {
     position: absolute;
     //bottom: 0;
     margin-left: -30rem;
-    margin-top: 120rem;
+    margin-top: 120rem; // 调整距离，使功能图标往上移动
   }
 }
 
