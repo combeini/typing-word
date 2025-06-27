@@ -452,8 +452,8 @@ onUnmounted(() => {
   .options-wrapper {
     position: absolute;
     //bottom: 0;
-    margin-left: -30rem;
-    margin-top: -40rem; // 再往上移动50px
+    margin-left: -20rem; //单词功能图标左右
+    margin-top: -20rem; // 往上移动
   }
 }
 

@@ -234,11 +234,11 @@ defineExpose({del, showWord, hideWord, play})
   align-items: center;
   justify-content: center;
   word-break: break-word;
-  margin-top: 80rem; // 将整个组件往上移动
+  margin-top: 100rem; // 翻译往上移动
 
   .phonetic, .translate {
-    font-size: 20rem;
-    margin-left: -30rem;
+    font-size: 20rem; //音标大小
+    margin-left: -10rem;
     transition: all .3s;
   }
 
@@ -250,7 +250,7 @@ defineExpose({del, showWord, hideWord, play})
   .translate {
     position: absolute;
     transform: translateY(-100%);
-    margin-bottom: 60rem; // 再往下移动20px
+    margin-bottom: 30rem; // 翻译往下移动
     color: var(--color-font-2);
 
     &:hover {
@@ -274,7 +274,7 @@ defineExpose({del, showWord, hideWord, play})
   .word-wrapper {
     display: flex;
     align-items: center;
-    gap: 10rem;
+    gap: 10rem; //英语左右移动
     color: var(--color-font-1);
 
     .word {
