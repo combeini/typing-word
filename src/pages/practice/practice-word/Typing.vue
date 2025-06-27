@@ -250,7 +250,7 @@ defineExpose({del, showWord, hideWord, play})
   .translate {
     position: absolute;
     transform: translateY(-100%);
-    margin-bottom: 40rem; // 翻译往下移动
+    margin-bottom: 60rem; // 翻译往下移动
     color: var(--color-font-2);
 
     &:hover {
