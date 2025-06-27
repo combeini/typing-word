@@ -85,6 +85,11 @@ watch(data, () => {
   practiceStore.index = data.index
 })
 
+// 监听索引变化，重置输入内容
+watch(() => data.index, () => {
+  input = ''
+})
+
 const word = $computed(() => {
   return data.words[data.index] ?? {
     trans: [],
@@ -103,6 +108,9 @@ const nextWord: Word = $computed(() => {
 })
 
 function next(isTyping: boolean = true) {
+  // 重置输入内容
+  input = ''
+  
   if (data.index === data.words.length - 1) {
     //复制当前错词，因为第一遍错词是最多的，后续的练习都是从错词中练习
     if (stat.total === -1) {
@@ -181,6 +189,8 @@ function prev() {
     ElMessage.warning('已经是第一个了~')
   } else {
     data.index--
+    // 重置输入内容
+    input = ''
   }
 }
 
