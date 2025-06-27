@@ -443,7 +443,7 @@ onUnmounted(() => {
     position: absolute;
     //bottom: 0;
     margin-left: -30rem;
-    margin-top: 120rem; // 调整距离，使功能图标往上移动
+    margin-top: -40rem; // 再往上移动50px
   }
 }
 

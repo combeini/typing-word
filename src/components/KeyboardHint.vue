@@ -54,22 +54,22 @@ const isKeyHighlighted = (key: string) => {
   .keyboard {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 10rem; // 增大行间距
     
     .keyboard-row {
       display: flex;
       justify-content: center;
-      gap: 6rem;
+      gap: 8rem; // 增大键间距
       
       .key {
-        width: 40rem;
-        height: 40rem;
+        width: 55rem; // 增大键盘宽度
+        height: 50rem; // 增大键盘高度
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: rgba(30, 100, 200, 0.2); // 蓝色背景，增加对比度
-        border-radius: 6rem;
-        font-size: 16rem;
+        border-radius: 8rem; // 增大圆角
+        font-size: 25rem; // 增大字体
         color: #ffffff; // 白色文字，增加对比度
         text-transform: uppercase;
         user-select: none;
@@ -86,7 +86,8 @@ const isKeyHighlighted = (key: string) => {
         }
         
         &.key-space {
-          width: 200rem;
+          width: 300rem; // 增大空格键宽度
+          font-size: 25rem; // 调整空格键字体大小
         }
       }
     }
